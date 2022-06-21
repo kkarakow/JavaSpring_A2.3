@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link th:href="@{/css/stylesheetA2.css}" rel="stylesheet" />
+<title>Display Plants</title>
+</head>
+<body>
+
+
+	<div class="table-wrapper">
+		<table class="fl-table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Type</th>
+					<th>DoP</th>
+					<th>Supplier</th>
+					<th>Quantity</th>
+					<th>Price</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="aPlant:${plantList}">
+					<td th:text="${aPlant.plantName}">Rose</td>
+					<td th:text="${aPlant.plantType}">Rose</td>
+					<td th:text="${{aPlant.dateOfProduction}}">2021-06-10</td>
+					<td th:text="${aPlant.nameOfSupplier}">Plants.org</td>
+					<td th:text="${aPlant.quantity}">5</td>
+					<td th:text="${aPlant.amountPaid}">$79.99</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="table-wrapper">
+		<table class="fl-table">
+			<tbody>
+				<tr>
+					<td><a href="/"><button class="button">Home</button></a></td>
+					<td><a href="/addPlant"><button class="button">Add
+								Plant</button></a></td>
+					<td><a href="/searchPlant"><button class="button">Search
+								Plant</button></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

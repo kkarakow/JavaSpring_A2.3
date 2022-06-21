@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link th:href="@{/css/stylesheetA2.css}" rel="stylesheet" />
+<title>Search Details of a Plant</title>
+</head>
+<body>
+	<div class="table-wrapper">
+
+		<form method="post" action="#" th:action="@{/searchPlant}" th:object="${plant}">
+			<table class="fl-table">
+				<thead>
+					<tr>
+						<th colspan="2">Search for plant</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr>
+						<td>Plant type:</td>
+						<td><select th:field="*{plantType}">
+								<option th:each="p:${plantTypesList}" 
+								th:value="${p.plantType}" th:text="${p.plantType}" />
+						</select></td>
+						
+						<!-- <td><input type="text" name="plantType"></td> -->
+					</tr>
+					<tr>
+						<td colspan="2"><input class="button" type="submit" value="search" /></td>
+					</tr>
+
+				</tbody>
+			</table>
+		</form>
+	</div>
+	<div class="table-wrapper">
+		<table class="fl-table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Type</th>
+					<th>DoP</th>
+					<th>Supplier</th>
+					<th>Quantity</th>
+					<th>Price</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="aPlant:${searchList}">
+					<td th:text="${aPlant.plantName}">Rose</td>
+					<td th:text="${aPlant.plantType}">Rose</td>
+					<td th:text="${{aPlant.dateOfProduction}}">2021-06-10</td>
+					<td th:text="${aPlant.nameOfSupplier}">Plants.org</td>
+					<td th:text="${aPlant.quantity}">5</td>
+					<td th:text="${aPlant.amountPaid}">$79.99</td>
+				</tr>
+
+
+			</tbody>
+		</table>
+	</div>
+
+	<div class="table-wrapper">
+		<table class="fl-table">
+			<tbody>
+				<tr>
+					<td><a href="/"><button class="button">Home</button></a></td>
+					<td><a href="/addPlant"><button class="button">Add
+								Plant</button></a></td>
+					<td><a href="/displayPlants"><button class="button">Display
+								Plant</button></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
